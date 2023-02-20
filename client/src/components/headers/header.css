@@ -1,0 +1,290 @@
+header {
+  min-height: 100px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  background: white;
+}
+
+header a {
+  text-transform: uppercase;
+  color: var(--base);
+}
+
+nav {
+  display: flex;
+  margin-left: auto;
+  margin-right: 2em;
+}
+
+nav ul {
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  display: inline-block;
+  /* border: 1px solid var(--base); */
+  color: var(--base);
+  cursor: pointer;
+  margin: 20px;
+  align-items: center;
+  padding: 0.5em 0.7em;
+}
+
+nav ul li:hover {
+  background: var(--base);
+  color: #fff;
+  opacity: 0.9;
+  transition: background 500ms ease-out, opacity 500ms ease-out;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2em;
+  margin-right: auto;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  margin: 2em;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu-deploy {
+  background: var(--secondary);
+  height: auto;
+  width: 400px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  opacity: 0;
+  z-index: 10;
+  justify-content: center;
+  animation: menuContract 1s;
+}
+
+.menu-deploy.active {
+  display: block;
+  opacity: 1;
+  animation: menuDeploy 300ms ease-in;
+  background-color: var(--secondaryLowOp);
+}
+
+@keyframes menuDeploy {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateX(0);
+  }
+}
+
+@keyframes menuContract {
+  0% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+}
+
+/* Deploy menu responsive  */
+
+.menu nav {
+  display: flex;
+  margin-top: 9em;
+  margin-left: 0;
+}
+
+.menu ul {
+  display: flex;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-icon {
+  width: 20px;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+}
+
+
+/* Admin menu  */
+.admin-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 2em;
+  
+}
+
+.admin-title h1{
+    font-size: 1em;
+}
+
+.bars {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+.bar-1 {
+  display: inline-block;
+  width: 10px;
+  height: 2px;
+  background: var(--base);
+  transform: rotate(225deg) translateY(3px);
+}
+
+.bar-2 {
+  display: inline-block;
+  width: 10px;
+  height: 2px;
+  background: var(--base);
+  transform: rotate(-225deg) translateY(3px);
+}
+
+.admin-menu {
+  display: flex;
+}
+
+.admin-ul {
+  display: none;
+  opacity: 0;
+}
+
+.admin-ul.active {
+  display: block;
+  opacity: 1;
+  text-align: right;
+  margin-right: 4em;
+  animation: appear 500ms alternate;
+  position: absolute;
+  right: 20px;
+  top: 60px;
+}
+
+@keyframes adminMenuDeploy {
+  0% {
+    opacity: 0;
+    transform: translateY(-400px);
+  }
+
+  0% {
+    opacity: 1;
+    transform: translateY(-200px);
+  }
+}
+
+.admin-menu li {
+  margin-left: 2em;
+  margin-right: 0;
+}
+
+.orders-icon {
+
+}
+
+/* Users menu  */
+
+.login-menu {
+  margin: 1em;
+}
+
+
+.user-icon {
+  margin-right: 2em;
+  width: 25px;
+}
+.user-menu {
+  width: var(--userMenuWidth);
+  background: transparent;
+  height: var(--userMenuHeight);
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  color: #16437ea9;
+  opacity: 0;
+  display: none;
+}
+
+.user-menu h3 {
+  margin: 0.5em;
+  margin-left: 0;
+}
+
+.user-menu a,
+li {
+  color: #16437ea9;
+  list-style: none;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.user-menu.active {
+  display: block;
+  opacity: 1;
+  text-align: right;
+  margin-right: 4em;
+  animation: appear 500ms alternate;
+}
+
+
+
+/* Cart */
+
+.cart-icon {
+  position: relative;
+  margin-right: 40px;
+}
+
+.cart-icon span {
+  background: crimson;
+  border-radius: 20px;
+  color: white;
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  padding: 5px 7px;
+  font-size: 8px;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

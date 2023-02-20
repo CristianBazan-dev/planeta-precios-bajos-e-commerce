@@ -1,0 +1,134 @@
+.product_card{
+    width: 300px; 
+    height: 500px; 
+    padding: 0 20px; 
+    box-shadow: 0 0 15px #ddd; 
+    margin: 10px 0; 
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.product_card:hover{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: box-shadow 1s; 
+}
+
+
+.product_card img{
+    width: 100%; 
+    height: 300px; 
+    display: block; 
+    object-fit: cover; 
+}
+
+/* .product_card img:hover{
+  transform: scale(1.1);
+  transition: transform 1s; 
+} */
+
+.product_box h2{
+    width: 100%; 
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-transform: capitalize; 
+    cursor: pointer;
+    color: #323232; 
+}
+.product_card span{
+    color: #222; 
+    font-style: bold;
+    font-weight: 500;
+}
+
+.product_box p{
+    width: 100%; 
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2; 
+    height: 50px; 
+    overflow: hidden; 
+    color: #323232; 
+    font-size: 13px;
+    
+}
+
+.row_btn{
+    width: 100%; 
+    margin-top: 5px; 
+    display: flex; 
+    justify-content: center;
+}
+
+.row_btn a{
+    width: 50%; 
+    text-align: center; 
+    text-transform: uppercase; 
+    color: white; 
+    font-weight: 600; 
+    letter-spacing: 2px; 
+    padding: 15px; 
+}
+
+
+#btn_view, #btn_buy{ 
+  align-items: center;
+  background-color: #ffffff;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #16437E;
+  outline: 1px solid #16437E;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  width: 100px;
+  height: 40px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  margin: 0 20px;
+}
+
+
+#btn_view:hover,
+#btn_view:focus,
+#btn_buy:hover,
+#buy:focus { 
+  background-color: #16437E;
+  color: #ffffff;
+  transition: background-color 500ms; 
+}
+
+#btn_view:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+#btn_view:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
+}
+
+
+.product_card input{
+    position: absolute;
+    width: 25px; 
+    height: 25px; 
+}

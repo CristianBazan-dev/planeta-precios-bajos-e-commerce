@@ -1,0 +1,112 @@
+.products{
+    width: 100%; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-items: center; 
+    margin: 20px 0;
+    gap: 70px 30px; 
+    animation: appear 2s; 
+}
+
+
+@keyframes appear{
+    0%{
+        opacity: 0; 
+    }
+    100%{
+        opacity: 1; 
+    }
+}
+/* ---------- Product Item -------- */
+@import url("../utils/productItem/productItem.css");
+
+
+.delete-all{
+    text-align: left; 
+    margin: 20px; 
+
+}
+.delete-all input{
+    height: 25px;
+    width: 25px;
+    transform: translateY(5px); 
+    margin: 0 15px; 
+}
+.delete-all span{
+    text-transform: uppercase; 
+    color: rgb(3, 165, 206); 
+    letter-spacing: 1.3px; 
+}
+.delete-all button{
+    border: 1px solid crimson; 
+    padding: 10px 25px; 
+    color: crimson; 
+    text-transform: uppercase; 
+}
+
+/* ---------- Filters Menu -------- */
+.filter_menu{
+    width: 50%; 
+    min-height: 40px; 
+    overflow: hidden; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    margin: auto;  
+    
+}
+.filter_menu section, input{
+    border: 1px solid #ccc; 
+    outline: none;
+    height: 40px; 
+    padding: 0 5px; 
+    transition: border 200ms; 
+    font-size: 1em;
+}
+
+.filter_menu section, input:hover, input:focus{
+    border: 1px solid var(--base); 
+    transition: border 200ms; 
+    font-size: .9em; 
+}   
+
+.filter_menu input{
+    flex: 1; 
+    margin: 2px 10px; 
+    border-radius: 100px; 
+    font-size: .9em;
+}
+
+.row select{
+    border-radius: 100px; 
+    padding: 1px;
+    outline: none;
+    font-size: 13px;
+
+}
+
+.row span, 
+.row option{
+    font-size: .8em; 
+}
+
+.row select:focus{
+    box-shadow: 0 0 3pt 2pt #719ECE;  
+   
+}
+
+
+/* ---------- Load More -------- */
+.load_more{
+    text-align: center; 
+}   
+.load_more button{
+    padding: 10px 25px;
+    margin-bottom: 20px; 
+    border: 1px solid #555; 
+    text-transform: capitalize; 
+    align-items: center;    
+    text-align: center;
+    
+}
