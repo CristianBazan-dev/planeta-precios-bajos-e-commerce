@@ -1,0 +1,242 @@
+{
+    "email": "raul@gmail.com",
+    "password": "123456"
+}
+
+
+    {
+        "lastName": "Raulio",
+        "personalId": "123456783",
+        "phone": "123141151",
+        "country": "Argentina",
+        "state": "Córdoba",
+        "city": "Morrison",
+        "postalCode": "2568",
+        "address": "Raulio 1250", 
+        "items": [
+            {
+                "product_id": "cel05",
+                "title": "samsung s23",
+                "unit_price": 100,
+                "description": "Nuevito",
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm…",
+                "images": [
+                    {
+                        "public_id": "planeta-precios-bajos-e-commerce/qemfe8i2gpvmhklgavur",
+                        "url": "https://res.cloudinary.com/dhbvri4ni/image/upload/v1675882153/planeta-precios-bajos-e-commerce/qemfe8i2gpvmhklgavur.png"
+                    }
+                ],
+                "category": "63e39161e9e929d7c7cdb667",
+                "quantity": 1,
+                "sold": 1
+            }
+        ],
+        "total": 123451
+    }
+
+
+
+
+
+{
+    "additional_info": "",
+    "auto_return": "",
+    "back_urls": {
+        "failure": "http://www.failure.com",
+        "pending": "http://www.pending.com",
+        "success": "https://www.success.com"
+    },
+    "binary_mode": false,
+    "client_id": "4523409796313132",
+    "collector_id": 1306417803,
+    "coupon_code": null,
+    "coupon_labels": null,
+    "date_created": "2023-02-28T13:15:46.583-04:00",
+    "date_of_expiration": null,
+    "expiration_date_from": null,
+    "expiration_date_to": null,
+    "expires": false,
+    "external_reference": "",
+    "id": "1306417803-fe0ccf34-0238-4b82-a6fd-421976d0db25",
+    "init_point": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=1306417803-fe0ccf34-0238-4b82-a6fd-421976d0db25",
+    "internal_metadata": null,
+    "items": [
+        {
+            "id": "",
+            "category_id": "",
+            "currency_id": "ARS",
+            "description": "Nuevito",
+            "title": "samsung s23",
+            "quantity": 1,
+            "unit_price": 100
+        }
+    ],
+    "marketplace": "NONE",
+    "marketplace_fee": 0,
+    "metadata": {},
+    "notification_url": "https://www.your-site.com/ipn",
+    "operation_type": "regular_payment",
+    "payer": {
+        "phone": {
+            "area_code": "",
+            "number": ""
+        },
+        "address": {
+            "zip_code": "",
+            "street_name": "",
+            "street_number": null
+        },
+        "email": "",
+        "identification": {
+            "number": "",
+            "type": ""
+        },
+        "name": "",
+        "surname": "",
+        "date_created": null,
+        "last_purchase": null
+    },
+    "payment_methods": {
+        "default_card_id": null,
+        "default_payment_method_id": null,
+        "excluded_payment_methods": [
+            {
+                "id": ""
+            }
+        ],
+        "excluded_payment_types": [
+            {
+                "id": ""
+            }
+        ],
+        "installments": null,
+        "default_installments": null
+    },
+    "processing_modes": null,
+    "product_id": null,
+    "redirect_urls": {
+        "failure": "",
+        "pending": "",
+        "success": ""
+    },
+    "sandbox_init_point": "https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=1306417803-fe0ccf34-0238-4b82-a6fd-421976d0db25",
+    "site_id": "MLA",
+    "shipments": {
+        "default_shipping_method": null,
+        "receiver_address": {
+            "zip_code": "",
+            "street_name": "",
+            "street_number": null,
+            "floor": "",
+            "apartment": "",
+            "city_name": null,
+            "state_name": null,
+            "country_name": null
+        }
+    },
+    "total_amount": null,
+    "last_updated": null
+}
+
+
+
+
+        "payer": {
+          "phone": {
+              "area_code": "",
+              "number": ""
+          },
+          "address": {
+              "zip_code": "",
+              "street_name": "",
+              "street_number": null
+          },
+          "email": "",
+          "identification": {
+              "number": "",
+              "type": ""
+          },
+          "name": "",
+          "surname": "",
+          "date_created": null,
+          "last_purchase": null
+      },
+
+
+      "product_id": null,
+
+      "shipments": {
+        "default_shipping_method": null,
+        "receiver_address": {
+            "zip_code": "",
+            "street_name": "",
+            "street_number": null,
+            "floor": "",
+            "apartment": "",
+            "city_name": null,
+            "state_name": null,
+            "country_name": null
+        }
+    },
+    "total_amount": null,
+
+
+
+
+
+    {
+    "lastName": "Raulio",
+    "personalId": "123456783",
+    "phone": "123141151",
+    "country": "Argentina",
+    "state": "Córdoba",
+    "city": "Morrison",
+    "postalCode": "2568",
+    "address": "Raulio 1250", 
+    "items": [
+        {
+            "product_id": "cel05",
+            "title": "samsung s23",
+            "unit_price": 100,
+            "description": "Nuevito",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm…",
+            "images": [
+                {
+                    "public_id": "planeta-precios-bajos-e-commerce/qemfe8i2gpvmhklgavur",
+                    "url": "https://res.cloudinary.com/dhbvri4ni/image/upload/v1675882153/planeta-precios-bajos-e-commerce/qemfe8i2gpvmhklgavur.png"
+                }
+            ],
+            "category": "63e39161e9e929d7c7cdb667",
+            "quantity": 1,
+            "sold": 1
+        },
+        {
+            "product_id": "cel05",
+            "title": "samsung s40",
+            "unit_price": 2000,
+            "description": "Nuevito",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm…",
+            "images": [
+                {
+                    "public_id": "planeta-precios-bajos-e-commerce/qemfe8i2gpvmhklgavur",
+                    "url": "https://res.cloudinary.com/dhbvri4ni/image/upload/v1675882153/planeta-precios-bajos-e-commerce/qemfe8i2gpvmhklgavur.png"
+                }
+            ],
+            "category": "63e39161e9e929d7c7cdb667",
+            "quantity": 1,
+            "sold": 1
+        }
+    ],
+    "total": 123451
+}
+
+
+Cuentas ML 
+
+Vendedor: 
+TEST_USER_1306417803
+J09cgfFDTB
+
+Comprador: 
+TEST_USER_1306416836
+MvqJXEZQ9P

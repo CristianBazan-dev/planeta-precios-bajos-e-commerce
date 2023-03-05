@@ -37,11 +37,11 @@ function OrderDetails() {
         <tbody>
           <tr>
             <td>{orderDetails.name}</td>
-            <td>{orderDetails.address.country_code}</td>
-            <td>{orderDetails.address.admin_area_1}</td>
-            <td>{orderDetails.address.admin_area_2}</td>
-            <td>{orderDetails.address.postal_code}</td>
-            <td>{orderDetails.address.address_line_1}</td>
+            <td>{orderDetails.country}</td>
+            <td>{orderDetails.state}</td>
+            <td>{orderDetails.city}</td>
+            <td>{orderDetails.postalCode}</td>
+            <td>{orderDetails.address}</td>
           </tr>
         </tbody>
       </table>
@@ -57,13 +57,13 @@ function OrderDetails() {
         </thead>
 
         <tbody>
-          {orderDetails.cart.map((order) => {
-            return <tr key={order._id}>
-                        <td><img src={order.images.url} alt="" /></td>
-                        <td>{order.title}</td>
-                        <td>{order.quantity}</td>
-                        <td>{order.price * order.quantity}</td>
-            </tr>;
+          {orderDetails.items.map((item) => {
+            return <tr key={item._id}>
+                        <td><img src={item.images.url} alt="" /></td>
+                        <td>{item.title}</td>
+                        <td>{item.quantity}</td>
+                        <td>{item.unit_price * item.quantity}</td>
+            </tr>;  
           })
           
           }

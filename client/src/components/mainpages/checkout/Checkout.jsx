@@ -1,15 +1,36 @@
 import React, { useContext, useState, useEffect } from "react";
 import { GlobalState } from "../../../GlobalState";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import e from "express";
 
 function Checkout() {
   const state = useContext(GlobalState);
-  const [cart] = state.userAPI.cart;
+  const [cart, setCart] = state.userAPI.cart;
+  const [token] = state.token;
   const [total, setTotal] = useState(0);
+  const [paymentId, setPaymentId] = useState("");
+  const [mpLink, setMpLink] = useState("");
+
+  const [checkout, setCheckout] = useState({
+    name: "",
+    lastName: "",
+    personalId: "",
+    payer_email: "",
+    phone: "",
+    country: "",
+    state: "",
+    postalCode: "",
+    city: "",
+    address: "",
+
+    items: cart,
+  });
 
   useEffect(() => {
     const getTotal = () => {
       const total = cart.reduce((prev, item) => {
-        return prev + item.price * item.quantity;
+        return prev + item.unit_price * item.quantity;
       }, 0);
 
       setTotal(total);
@@ -17,8 +38,60 @@ function Checkout() {
     getTotal();
   }, [cart]);
 
+  const onChangeInput = async (e) => {
+    const { name, value } = e.target;
+    setCheckout({ ...checkout, [name]: value });
+  };
+
+  const addToCart = async (cart) => {
+    await axios.patch(
+      "/users/addcart",
+      { cart },
+      {
+        headers: { Authorization: token },
+      }
+    );
+  };
+
+  const checkoutSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(
+        "/api/payment",
+        { total, ...checkout },
+        {
+          headers: { Authorization: token },
+        }
+      );
+
+      const paymentId = res.data;
+      setPaymentId(paymentId);
+
+      const mpRes = await axios.post(`/api/payment/${paymentId}`, {
+        headers: { Authorization: token },
+      });
+
+      const mpLink = mpRes.data.init_point;
+      setMpLink(mpLink);
+
+      alert("Compra confirmada! Serás redirigido a realizar el pago");
+
+      window.open(`${mpLink}`);
+      window.location.href = "/history  ";
+      setCart([]);
+      addToCart([]);
+    } catch (err) {
+      alert(err.response.data.msg);
+    }
+  };
 
 
+  const paySelection = () => {
+     alert("hola"); 
+  }
+
+  console.log(paymentId, mpLink);
 
   return (
     <div className="checkout-page">
@@ -42,89 +115,207 @@ function Checkout() {
                     <img src={item.images.url} alt="" />
                   </td>
                   <td>{item.title}</td>
-                  <td>${item.price}</td>
+                  <td>${item.unit_price}</td>
                   <td>{item.quantity}</td>
-                  
-                  <td>${item.price * item.quantity}</td>
-                </tr> 
+
+                  <td>${item.unit_price * item.quantity}</td>
+                </tr>
               );
-              
             })}
           </tbody>
-          
-          <tbody className="total"> 
-            <td>
-              <h4>Total: ${total}</h4>
+
+          <tbody className="total">
+            <tr>
+              <td>
+                <h4>Total: ${total}</h4>
               </td>
-            
+            </tr>
           </tbody>
-          
         </table>
       </div>
 
       <div>
-        
-        <form action="" className="consumer-form">
-        <h2>Datos del comprador</h2>
-          <span>Nombre</span>
-          <input type="text" 
-          name="name" 
-           />
-        
-          <span>Apellido</span>
-          <input 
-          type="text" 
-          name="lastName" 
-          
-          />
+        <form onSubmit={checkoutSubmit} className="consumer-form">
+          <div className="payment-method">
+            <h2>Método de pago</h2>
 
-          <span>DNI</span>
-          <input 
-          type="text" 
-          name="personalId" 
-           />
-        
-          <span>Teléfono celular</span>
-          <input 
-          type="text"
-          name="phone" 
-          />
+            <div className="form-item">
+              {/* <input type="checkbox" className="check-pay-meth" /> */}
+              <img
+                src="https://res.cloudinary.com/dhbvri4ni/image/upload/v1677862587/planeta-precios-bajos-e-commerce/0006813_mercadopago-checkout-latam-tecnofin_z51fvi.png"
+                alt="" className="mp"
+              />
+            </div>
 
-          <h2>Datos para el envío</h2>
-          <span>Provincia</span>
-          <select name="" id="">
-            <option value="">Buenos Aires</option>
-            <option value="">Catamarca</option>
-            <option value="">Chaco</option>
-            <option value="">Chubut</option>
-            <option value="">Córdoba</option>
-            <option value="">Corrientes</option>
-            <option value="">Entre Rios</option>
-            <option value="">Formosa</option>
-            <option value="">Jujuy</option>
-            <option value="">La Pampa</option>
-            <option value="">La Rioja</option>
-            <option value="">Mendoza</option>
-            <option value="">Misiones</option>
-            <option value="">Neuquén</option>
-            <option value="">Río Negro</option>
-            <option value="">Salta</option>
-            <option value="">San Juan</option>
-            <option value="">San Luis</option>
-            <option value="">Santa Cruz</option>
-            <option value="">Santa Fe</option>
-            <option value="">Santiago del Estero</option>
-            <option value="">Tierra del Fuego</option>
-            <option value="">Tucumán</option>
-          </select>
+            <div className="form-item">
+              {/* <input type="checkbox" className="check-pay-meth" /> */}
+              <img src="https://res.cloudinary.com/dhbvri4ni/image/upload/v1677871231/planeta-precios-bajos-e-commerce/Transfer_s8nqkh.png" alt="" />
+              <span>Transferencia bancaria</span>
+            </div>
 
-          <span>Localidad</span>
-          <input type="text" />
+            <div className="form-item">
+              {/* <input type="checkbox" className="check-pay-meth" /> */}
+              <img src="https://res.cloudinary.com/dhbvri4ni/image/upload/v1677871231/planeta-precios-bajos-e-commerce/Sucursal_oy3lk6.png" alt="" />
+              <span>Pago en sucursal</span>
+            </div>
+          </div>
 
-          <span>Código postal</span>
-          <input type="number"></input>
+          <div className="buyer-data">
+            <h2>Datos del comprador</h2>
 
-          <button type="submit">Pasar a envío</button>
+            <div className="form-container">
+              <div className="form-item">
+                <span>Nombre</span>
+                <input
+                  type="text"
+                  name="name"
+                  value={checkout.name}
+                  onChange={onChangeInput}
+                />
+              </div>
+
+              <div className="form-item">
+                <span>Apellido</span>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={checkout.lastName}
+                  onChange={onChangeInput}
+                />
+              </div>
+
+              <div className="form-item">
+                <span>DNI</span>
+                <input
+                  type="text"
+                  name="personalId"
+                  value={checkout.personalId}
+                  onChange={onChangeInput}
+                />
+              </div>
+
+              <div className="form-item">
+                <span>Email</span>
+                <input
+                  type="text"
+                  name="payer_email"
+                  value={checkout.payer_email}
+                  onChange={onChangeInput}
+                />
+              </div>
+
+              <div className="form-item">
+                <span>Teléfono celular</span>
+                <input
+                  type="text"
+                  name="phone"
+                  value={checkout.phone}
+                  onChange={onChangeInput}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="shipping-method">
+            <h2>Método de envío</h2>
+
+            <div className="form-item">
+              {/* <input type="checkbox" className="check-pay-meth" /> */}
+              <img
+                src="https://res.cloudinary.com/dhbvri4ni/image/upload/v1677871845/planeta-precios-bajos-e-commerce/Correo_cbdbub.png" className="cor-Ar"
+                alt=""
+              />
+            </div>
+
+            <div className="form-item">
+              {/* <input type="checkbox" className="check-pay-meth" /> */}
+              <img src="https://res.cloudinary.com/dhbvri4ni/image/upload/v1677871231/planeta-precios-bajos-e-commerce/Sucursal_oy3lk6.png" alt="" />
+              <span>Retiro en sucursal</span>
+            </div>
+          </div>
+
+          <div className="shipping-data">
+            <h2>Datos para el envío</h2>
+            <div className="form-container">
+              <div className="form-item">
+                <span>País</span>
+                <input
+                  type="text"
+                  name="country"
+                  value={checkout.country}
+                  onChange={onChangeInput}
+                />
+              </div>
+
+              <div className="form-item">
+                <span>Provincia</span>
+                <select
+                  name="state"
+                  value={checkout.state}
+                  onChange={onChangeInput}
+                  id="selectState"
+                >
+                  <option value="Buenos Aires">Buenos Aires</option>
+                  <option value="Catamarca">Catamarca</option>
+                  <option value="Chaco">Chaco</option>
+                  <option value="Chubut">Chubut</option>
+                  <option value="Córdoba">Córdoba</option>
+                  <option value="Corrientes">Corrientes</option>
+                  <option value="Entre Ríos">Entre Rios</option>
+                  <option value="Formosa">Formosa</option>
+                  <option value="Jujuy">Jujuy</option>
+                  <option value="La Pampa">La Pampa</option>
+                  <option value="La Rioja">La Rioja</option>
+                  <option value="Mendoza">Mendoza</option>
+                  <option value="Misiones">Misiones</option>
+                  <option value="Neuquén">Neuquén</option>
+                  <option value="Río Negro">Río Negro</option>
+                  <option value="Salta">Salta</option>
+                  <option value="San Juan">San Juan</option>
+                  <option value="San Luis">San Luis</option>
+                  <option value="Santa Cruz">Santa Cruz</option>
+                  <option value="Santa Fe">Santa Fe</option>
+                  <option value="Santiago del Estero">
+                    Santiago del Estero
+                  </option>
+                  <option value="Tierra del Fuego">Tierra del Fuego</option>
+                  <option value="Tucumán">Tucumán</option>
+                </select>
+              </div>
+
+              <div className="form-item">
+                <span>Localidad</span>
+                <input
+                  type="text"
+                  name="city"
+                  value={checkout.city}
+                  onChange={onChangeInput}
+                />
+              </div>
+
+              <div className="form-item">
+                <span>Código postal</span>
+                <input
+                  type="text"
+                  name="postalCode"
+                  value={checkout.postalCode}
+                  onChange={onChangeInput}
+                ></input>
+              </div>
+
+              <div className="form-item">
+                <span>Dirección</span>
+                <input
+                  type="text"
+                  name="address"
+                  value={checkout.address}
+                  onChange={onChangeInput}
+                ></input>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit">Continuar con el pago</button>
         </form>
       </div>
     </div>

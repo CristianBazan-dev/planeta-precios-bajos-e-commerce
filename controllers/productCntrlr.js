@@ -68,7 +68,7 @@ const productCntrlr = {
       const {
         product_id,
         title,
-        price,
+        unit_price,
         description,
         content,
         images,
@@ -87,7 +87,7 @@ const productCntrlr = {
       const newProduct = new Products({
         product_id,
         title: title.toLowerCase(),
-        price,
+        unit_price,
         description,
         content,
         images,
@@ -111,7 +111,7 @@ const productCntrlr = {
   updateProduct: async (req, res) => {
     try {
       // Soon to be updated to introduce the new params of the model
-      const { title, price, description, content, images, category } = req.body;
+      const { title,  unit_price, description, content, images, category } = req.body;
 
       if (!images)
         return res
@@ -122,7 +122,7 @@ const productCntrlr = {
         { _id: req.params.id },
         {
           title: title.toLowerCase(),
-          price,
+          unit_price,
           description,
           content,
           images,

@@ -1,76 +1,223 @@
-.checkout-page{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2em;
+
+/* All page  */
+.checkout-page {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 2em 5em;
+  flex-direction: column;
+}
+
+
+/* Table  */
+.product-table {
     
 }
 
-
-.product-table { 
-    width: 40%; 
-    position: absolute;
-    top: 10em; 
-    right: 70px; 
-    border-radius: 20px; 
-    border: 3px solid rgba(75, 141, 241, 0.452);
+.product-table table,
+th,
+tr td {
+  border: none;
 }
 
-.product-table table{
-    width: 100%;
+.product-table table {
+  border: 2px solid var(--base);
+  width: 100%;
 }
 
-th, td{
-    text-align: center; 
-    padding: 8px; 
-    text-transform: capitalize; 
-}
-
-.product-table img{
-    width: 70px;
-    height: 100px; 
-    object-fit: cover; 
+.product-table img {
+  width: 70px;
+  height: 100px;
+  object-fit: cover;
 }
 
 
-.total{
-    position: relative;
-    left: 0px;
+/* Consumer form  */
+.consumer-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto; 
+  justify-content: center; 
+  align-items: center; 
 }
 
-.consumer-form{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 10em;
-    width: 300px;
-    border-radius: 10px; 
-    z-index: 10; 
-    padding: 20px;
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2em;
+}
+
+
+.form-item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.form-item input, .form-item select{
+  width: 5em;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 0.5rem;
+  padding-left: calc(1rem * 2.5);
+  border-radius: 100px;
+  width: var(--loginCardInputWidth);
+  transition: background 0.5s;
+  font-size: 0.9em;
+  margin: 1em;
+}
+
+.form-item input[type="text"]:hover,
+.form-item input[type="text"]:focus,
+.form-item select:hover, 
+.form-item select:focus {
+  width: var(--loginCardInputWidth);
+  background: white;
+}
+
+
+.form-item img{
+  width: 100px; 
+  z-index: 1;
+}
+
+.form-item .mp,
+.form-item .cor-Ar{
+  width: 200px; 
 }
 
 
 
-.consumer-form input{
-    border: none; 
-    outline: none; 
-    background: rgba(255, 255, 255, .3); 
+.payment-method{
+ 
+}
+
+
+.payment-method .form-item,
+.shipping-method .form-item{
+  cursor: pointer; 
+  margin-left: 15em; 
+  margin: 2em; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 10px 5px; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.payment-method .form-item:hover, 
+.payment-method .form-item:focus, 
+.shipping-method .form-item:hover,
+.shipping-method .form-item:focus{
+  box-shadow:  rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  filter: brightness(1.2); 
+  animation: shadowCard 500ms; 
+}
+
+.payment-method .form-item .active,
+.shipping-method .form-item .active{
+  box-shadow:  rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  filter: brightness(1.2); 
+}
+
+
+.form-item .check-pay-meth{
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  width: 20px; 
+  border: none;
+  outline: none;  
+  position: relative; 
+  z-index: 2; 
+ 
+}
+
+.form-item .check-pay-meth::before{
+
+}
+ 
+.buyer-data,
+.shipping-data {
+  background: var(--lightBlue);
+  padding: 2em;
+  margin: 1em;
+  color: #fff;
+  border-radius: 10px;
+  z-index: 10;
+  width: 100%;
+}
+
+.payment-method, 
+.shipping-method{
+
+  padding: 2em;
+  margin: 1em;
+  color: var(--base);
+  border-radius: 10px;
+  z-index: 10;
+  width: 100%;
+}
+
+
+.payment-method h2, 
+.buyer-data h2,
+.shipping-method h2,
+.shipping-data h2{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  color: #fff;
+  padding: 1em;
+  margin: auto;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 2px;
+  font-size: 2em; 
+}
+
+.payment-method h2,
+.shipping-method h2{
+  color: var(--base); 
+}
+
+.consumer-form button {
+    align-items: center;
+    background-color: #ffffff;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #16437e;
+    outline: 1px solid #16437e;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+      "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+      "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
     width: 200px;
-    transition: background .5s; 
-    border-bottom: 1px solid rgba(75, 141, 241, 0.452);
-}
+    height: 40px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+      box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+      color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    margin: 0 20px;
+  }
+  
 
-.consumer-form input:focus{
-    background: #fff; 
-}
-
-.consumer-form select, option{
-    width: 200px;
-}
-
-.consumer-form button{
-    background: rgba(75, 141, 241, 0.993); 
-    color: #fff;
-    width: 200px;
-    margin-top: -2px;
+@media (max-width: 768px) {
 }

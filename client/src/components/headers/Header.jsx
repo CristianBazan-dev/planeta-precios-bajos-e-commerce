@@ -29,7 +29,13 @@ function Header(props) {
   const adminRouter = () => {
     return (
       <>
-        <div className="admin-ul">
+        <div
+          className="admin-ul"
+          onMouseLeave={() => {
+            const adminMenuDeploy = document.querySelector(".admin-ul");
+            adminMenuDeploy.classList.remove("active");
+          }}
+        >
           <li>
             <Link to="/create_product">Crear producto</Link>
           </li>
@@ -72,7 +78,7 @@ function Header(props) {
 
   return (
     <header>
-      {/* <div className="menu">
+      <div className="menu">
         <Menu
           width="20px"
           onClick={() => {
@@ -80,12 +86,14 @@ function Header(props) {
             menuDeploy.classList.toggle("active");
           }}
         />
-        <div className="menu-deploy active">
-          <Close className="close-icon"
-          onClick={() => {
-            const menuDeploy = document.querySelector(".menu-deploy");
-            menuDeploy.classList.remove("active");
-          }} />
+        <div className="menu-deploy">
+          <Close
+            className="close-icon"
+            onClick={() => {
+              const menuDeploy = document.querySelector(".menu-deploy");
+              menuDeploy.classList.remove("active");
+            }}
+          />
 
           <nav>
             <ul>
@@ -93,13 +101,16 @@ function Header(props) {
               <li>Sucursales</li>
             </ul>
           </nav>
+
+            
+
         </div>
-      </div> */}
+      </div>
 
       <div className="logo">
         <Link to="/">
           <img
-            src="https://res.cloudinary.com/dhbvri4ni/image/upload/v1675777472/planeta-precios-bajos-e-commerce/logo_rcgxiz.png"
+            src="https://res.cloudinary.com/dhbvri4ni/image/upload/v1677086214/planeta-precios-bajos-e-commerce/logo-planeta_qans8x.png"
             alt=""
           />
         </Link>
@@ -113,22 +124,24 @@ function Header(props) {
         </ul>
       </nav>
 
-      <ul className="admin-title" >
+      <ul className="admin-title">
         <h1>
           <Link to="/">
             {isAdmin ? `${name} - Admin` : ""}
-            {isAdmin ? <div
-              className="bars"
-              onClick={() => {
-                const adminMenuDeploy = document.querySelector(".admin-ul");
-                adminMenuDeploy.classList.toggle("active");
-              }}
-            >
-              <div className="bar-1"></div>
-              <div className="bar-2"></div>
-            </div>
-
-            : ""}
+            {isAdmin ? (
+              <div
+                className="bars"
+                onMouseOver={() => {
+                  const adminMenuDeploy = document.querySelector(".admin-ul");
+                  adminMenuDeploy.classList.toggle("active");
+                }}
+              >
+                <div className="bar-1"></div>
+                <div className="bar-2"></div>
+              </div>
+            ) : (
+              ""
+            )}
           </Link>
         </h1>
 
