@@ -46,8 +46,8 @@ function Filters() {
           <option value="">Más nuevo</option>
           <option value="sort=oldest">Más antigüo</option>
           <option value="sort=-sold">Más vendido</option>
-          <option value="sort=-price">Precio: Más caro</option>
-          <option value="sort=price">Precio: Más barato</option>
+          <option value="sort=-unit_price">Precio: Más caro</option>
+          <option value="sort=unit_price">Precio: Más barato</option>
         </select>
       </div>
     </div>

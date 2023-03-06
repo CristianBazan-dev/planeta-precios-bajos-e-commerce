@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalState } from "../../../GlobalState";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import PaypalButton from "./PaypalButton";
-import Checkout from "../checkout/Checkout";
+// import PaypalButton from "./PaypalButton";
+// import Checkout from "../checkout/Checkout";
 
 function Cart(props) {
   const state = useContext(GlobalState);
@@ -14,7 +14,7 @@ function Cart(props) {
   useEffect(() => {
     const getTotal = () => {
       const total = cart.reduce((prev, item) => {
-        return prev + item.price * item.quantity;
+        return prev + item.unit_price * item.quantity;
       }, 0);
 
       setTotal(total);
@@ -46,7 +46,7 @@ function Cart(props) {
   const decrement = (id) => {
     cart.forEach((item) => {
       if (item._id === id) {
-        item.quantity === 1 ? (item.quantityty = 1) : (item.quantity -= 1);
+        item.quantity === 1 ? (item.quantity = 1) : (item.quantity -= 1);
       }
     });
 
@@ -102,7 +102,7 @@ function Cart(props) {
             <div className="box-detail">
               <h2>{product.title}</h2>
 
-              <h3>${product.price * product.quantity}</h3>
+              <h3>${product.unit_price * product.quantity}</h3>
               <p>{product.description}</p>
               <p>{product.content}</p>
 
@@ -125,13 +125,12 @@ function Cart(props) {
         );
       })}
 
-      <Link to="/checkout" className="checkout-button" cart={total}>
-        Comprar
-      </Link>
-
       <div className="total">
-        <h3>Total: $ {total}</h3>
-        <PaypalButton total={total} tranSuccess={tranSuccess} />
+        <h2>Total: $ {total}</h2>
+        <Link to="/checkout" className="checkout-button" cart={total}>
+          Comprar
+        </Link>
+        {/* <PaypalButton total={total} tranSuccess={tranSuccess} /> */}
       </div>
     </div>
   );

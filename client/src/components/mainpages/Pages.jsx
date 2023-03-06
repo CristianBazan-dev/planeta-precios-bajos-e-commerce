@@ -22,6 +22,7 @@ import OrderHistory from './history/OrderHistory'
 import OrderDetails from './history/OrderDetails'
 
 import NotFound from './utils/not_found/NotFound'
+import Payment from './checkout/payment/Payment';
 
 
 
@@ -45,7 +46,9 @@ function Pages(props) {
             <Route path='/history' element={isLogged ? <OrderHistory/> : <NotFound/>} />
             <Route path='/history/:id' element={isLogged ? <OrderDetails/> : <NotFound/>} />
 
-            <Route path='/checkout' element={<Checkout/>} />
+            
+            <Route path='/checkout' element={isLogged ? <Checkout/> : <NotFound/>} />
+            <Route path='/checkout/payment/:id' element={isLogged ? <Payment/> : <NotFound/>} />
             <Route path='/cart' element={<Cart/>} />
             <Route path='/*' element={<NotFound/>} />
         </Routes>

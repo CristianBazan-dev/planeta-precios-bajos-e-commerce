@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
         trim: true, 
         required: true,
     },
-    price: {
+    unit_price: {
         type: Number,
         required: true, 
         trim: true 
@@ -39,9 +39,8 @@ const productSchema = new mongoose.Schema({
     },
     sold: {
         type: Number,
-        default: 0
+        default: 0 
     }
-
 },{
     timestamps: true
 })

@@ -26,13 +26,16 @@
 }
 .total{
     width: 100%; 
-    height: 50px; 
+    height: 100px; 
     display: flex; 
     align-items: center; 
-    justify-content: space-between; 
+    justify-content: center;    
+    margin: auto;
+    
+    flex-direction: column;
 }
-.total h3{
-    color: crimson; 
+.total h2{
+    color: var(--secondary); 
 }
 
 h2{
@@ -40,11 +43,44 @@ h2{
 }
 
 .checkout-button{
-    background: #333; 
-    color: white; 
-    margin-top: 10px; 
-    padding: 10px 25px; 
-    display: inline-block; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
+    align-items: center;
+    background-color: #ffffff;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #16437E;
+    outline: 1px solid #16437E;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    width: 100px;
+    height: 40px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    margin: 0 20px; 
 }
+
+.checkout-button:hover, 
+.checkout-button:focus{
+    background-color: #16437E;
+  color: #ffffff;
+  transition: background-color 500ms; 
+}
+
+.checkout-button:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);  
+}
+

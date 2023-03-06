@@ -5,6 +5,7 @@ import {DataProvider} from './GlobalState'
 
 import Header from './components/headers/Header'
 import MainPages from './components/mainpages/Pages'
+import Footer from './components/footers/Footer'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <div className="App">
           <Header/>
           <MainPages/>
-          
+          <Footer/>
         </div>
       </Router>
     </DataProvider>

@@ -1,30 +1,8 @@
 .checkout-page{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2em;
     
 }
 
-
-.product-table { 
-    width: 40%; 
-    position: absolute;
-    top: 10em; 
-    right: 70px; 
-    border-radius: 20px; 
-    border: 3px solid rgba(75, 141, 241, 0.452);
-}
-
-.product-table table{
-    width: 100%;
-}
-
-th, td{
-    text-align: center; 
-    padding: 8px; 
-    text-transform: capitalize; 
-}
 
 .product-table img{
     width: 70px;
@@ -33,44 +11,17 @@ th, td{
 }
 
 
-.total{
-    position: relative;
-    left: 0px;
-}
-
-.consumer-form{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 10em;
-    width: 300px;
-    border-radius: 10px; 
-    z-index: 10; 
-    padding: 20px;
-}
-
-
-
-.consumer-form input{
-    border: none; 
-    outline: none; 
-    background: rgba(255, 255, 255, .3); 
-    width: 200px;
-    transition: background .5s; 
-    border-bottom: 1px solid rgba(75, 141, 241, 0.452);
-}
-
-.consumer-form input:focus{
-    background: #fff; 
-}
-
-.consumer-form select, option{
-    width: 200px;
+form:hover{
+    transition: none;
 }
 
 .consumer-form button{
     background: rgba(75, 141, 241, 0.993); 
     color: #fff;
     width: 200px;
-    margin-top: -2px;
+    
+}
+
+@media(max-width: 768px){
+  
 }

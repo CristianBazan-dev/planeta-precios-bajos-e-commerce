@@ -9,7 +9,7 @@ import Loading from "../utils/loading/Loading";
 const initialState = {
   product_id: "",
   title: "",
-  price: 0,
+  unit_price: 0,
   description:
     "How to and tutorial videos of cool CSS effect, Web Design ideas, Javascript libraries, Node.",
   content:
@@ -146,20 +146,7 @@ function CreateProduct(props) {
 
   return (
     <div className="create_product">
-      <div className="upload">
-        <input type="file" name="file" id="file_up" onChange={handleUpload} />
-        {loading ? (
-          <div id="file_img">
-            <Loading />
-          </div>
-        ) : (
-          <div id="file_img" style={styleUpload}>
-            <img src={images ? images.url : ""} alt="" />
-            <span onClick={handleDestroy}>X</span>
-          </div>
-        )}
-      </div>
-
+    
       <form onSubmit={handleSubmit}>
         <div className="row">
           <label htmlFor="product_id">ID del producto</label>
@@ -189,14 +176,53 @@ function CreateProduct(props) {
         </div>
 
         <div className="row">
-          <label htmlFor="price">Precio</label>
+          <label htmlFor="brand">Marca</label>
+
+          <input
+            type="text"
+            name="title"
+            required
+            value={product.title}
+            id="title"
+            onChange={handleChangeInput}
+          />
+        </div>
+
+        <div className="row">
+          <label htmlFor="model">Modelo</label>
+
+          <input
+            type="text"
+            name="title"
+            required
+            value={product.title}
+            id="title"
+            onChange={handleChangeInput}
+          />
+        </div>
+
+        <div className="row">
+          <label htmlFor=" unit_price">Precio</label>
 
           <input
             type="number"
-            name="price"
+            name=" unit_price"
             required
-            value={product.price}
-            id="price"
+            value={product.unit_price}
+            id="unit_price"
+            onChange={handleChangeInput}
+          />
+        </div>
+
+        <div className="row">
+          <label htmlFor="title">Oferta</label>
+
+          <input
+            type="text"
+            name="title"
+            required
+            value={product.title}
+            id="title"
             onChange={handleChangeInput}
           />
         </div>
@@ -249,6 +275,20 @@ function CreateProduct(props) {
 
         <button type="submit">{onEdit ? "Actualizar" : "Crear"}</button>
       </form>
+
+      <div className="upload">
+        <input type="file" name="file" id="file_up" onChange={handleUpload} />
+        {loading ? (
+          <div id="file_img">
+            <Loading />
+          </div>
+        ) : (
+          <div id="file_img" style={styleUpload}>
+            <img src={images ? images.url : ""} alt="" />
+            <span onClick={handleDestroy}>X</span>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -6,7 +6,6 @@ header {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc;
   background: white;
 }
 
@@ -18,7 +17,7 @@ header a {
 nav {
   display: flex;
   margin-left: auto;
-  margin-right: 2em;
+  margin-right: 0;
 }
 
 nav ul {
@@ -51,15 +50,22 @@ nav ul li:hover {
   margin-right: auto;
 }
 
+.logo img{
+  width: 350px;
+}
+
 .icons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Menu contractil  */
+
 .menu {
-  display: flex;
+  display: none;
   margin: 2em;
+
   align-items: center;
   flex-direction: column;
 }
@@ -68,7 +74,7 @@ nav ul li:hover {
   background: var(--secondary);
   height: auto;
   width: 400px;
-  height: 100vh;
+  height: 25vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -83,7 +89,7 @@ nav ul li:hover {
   display: block;
   opacity: 1;
   animation: menuDeploy 300ms ease-in;
-  background-color: var(--secondaryLowOp);
+  background-color: #fff;
 }
 
 @keyframes menuDeploy {
@@ -107,40 +113,45 @@ nav ul li:hover {
   }
 }
 
-/* Deploy menu responsive  */
-
-.menu nav {
-  display: flex;
-  margin-top: 9em;
-  margin-left: 0;
-}
-
-.menu ul {
-  display: flex;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close-icon {
-  width: 20px;
+.close-icon{
+  width: 20px; 
   position: absolute;
-  top: 30px;
-  right: 20px;
+  top: 2em;
+  right: 2em;
 }
 
+.menu-deploy nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.menu-deploy ul{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-deploy li{
+  margin-bottom: 1px;
+}
+
+/* Deploy menu responsive  */
 
 /* Admin menu  */
 .admin-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: 2em;
-  
 }
 
-.admin-title h1{
-    font-size: 1em;
+.admin-title h1 {
+  font-size: 1em;
 }
 
 .bars {
@@ -165,24 +176,21 @@ nav ul li:hover {
   transform: rotate(-225deg) translateY(3px);
 }
 
-.admin-menu {
-  display: flex;
-}
-
 .admin-ul {
   display: none;
   opacity: 0;
 }
 
 .admin-ul.active {
-  display: block;
+  display: inline-block;
   opacity: 1;
   text-align: right;
-  margin-right: 4em;
+  margin-right: 6em;
   animation: appear 500ms alternate;
   position: absolute;
   right: 20px;
   top: 60px;
+  font-size: 0.9em;
 }
 
 @keyframes adminMenuDeploy {
@@ -202,8 +210,10 @@ nav ul li:hover {
   margin-right: 0;
 }
 
+.admin-ul a {
+  color: var(--base);
+}
 .orders-icon {
-
 }
 
 /* Users menu  */
@@ -211,7 +221,6 @@ nav ul li:hover {
 .login-menu {
   margin: 1em;
 }
-
 
 .user-icon {
   margin-right: 2em;
@@ -251,8 +260,6 @@ li {
   animation: appear 500ms alternate;
 }
 
-
-
 /* Cart */
 
 .cart-icon {
@@ -286,5 +293,34 @@ li {
   }
   100% {
     opacity: 0;
+  }
+}
+
+/* Responsive */
+
+@media(max-width: 906px) {
+  header {
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav{
+    display: none;
+  }
+
+  .logo{
+    margin: auto;
+  }
+
+  .cart-icon{
+    display: none;
+  }
+
+  .user-icon{
+    display: none;
+  }
+
+  .menu{
+    display: flex;  
   }
 }

@@ -2,11 +2,14 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 
 import { GlobalState } from "../../../GlobalState";
+import { Link } from "react-router-dom";
 
 import ProductItem from "../utils/productItem/ProductItem";
 import Loading from "../utils/loading/Loading";
 import Filters from "./Filters";
 import LoadMore from "./LoadMore";
+
+import { ReactComponent as Whatsapp } from "../../headers/icon/whatsapp.svg";
 
 function Products(props) {
   const state = useContext(GlobalState);
@@ -19,9 +22,7 @@ function Products(props) {
 
   const handleCheck = (id) => {
     products.forEach((product) => {
-      if (product._id === id) 
-      
-      product.checked = !product.checked;
+      if (product._id === id) product.checked = !product.checked;
     });
     setProducts([...products]);
   };
@@ -76,13 +77,13 @@ function Products(props) {
     <>
       <Filters />
 
-      {isAdmin && (
+      {/* {isAdmin && (
         <div className="delete-all">
           <span>Seleccionar todo</span>
           <input type="checkbox" checked={isCheck} onChange={checkAll} />
           <button onClick={deleteAll}>Eliminar todo</button>
         </div>
-      )}
+      )} */}
 
       <div className="products">
         {products.map((product) => {
@@ -92,11 +93,17 @@ function Products(props) {
               product={product}
               isAdmin={isAdmin}
               deleteProduct={deleteProduct}
-              handleCheck={handleCheck}
+              // handleCheck={handleCheck}
             />
           );
         })}
       </div>
+
+      <a href="https://api.whatsapp.com/send/?phone=543467445119&text=Hi%21+You+can+communicate+with+me+through+whatsapp.&type=phone_number&app_absent=0" target= "_blank">
+      <Whatsapp width="60px" fill="var(--base)" className="whatsapp-logo" />
+
+      </a>
+      
 
       <LoadMore />
       {products.length === 0 && <Loading />}
