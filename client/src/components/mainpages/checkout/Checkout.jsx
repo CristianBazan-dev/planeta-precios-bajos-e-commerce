@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import e from "express";
 
 function Checkout() {
   const state = useContext(GlobalState);
