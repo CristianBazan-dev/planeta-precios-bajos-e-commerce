@@ -5,7 +5,7 @@
     justify-items: center; 
     margin: 20px 0;
     gap: 70px 30px; 
-    animation: appear 2s; 
+    animation: appear 1s; 
 }
 
 
@@ -67,7 +67,7 @@
     
 }
 
-.filter_menu section, input:hover, input:focus{
+.filter_menu section input:hover,  .filter_menu section  input:focus{
     border: 1px solid var(--base); 
     transition: border 200ms; 
     font-size: .9em; 

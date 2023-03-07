@@ -20,7 +20,9 @@ const PaymentController = {
       if (!user) return res.status(400).json({ msg: "El usuario no existe." });
 
       const {
+        name,
         lastName,
+        payer_email,
         personalId,
         phone,
         country,
@@ -32,12 +34,12 @@ const PaymentController = {
         total,
       } = req.body;
 
-      const { _id, name, email } = user;
+      const { _id} = user;
 
       const newPayment = new Payments({
         user_id: _id,
         name,
-        payer_email: email,
+        payer_email,
         lastName,
         personalId,
         phone,
